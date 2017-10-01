@@ -77,10 +77,9 @@ public class Exercises {
                         .reduce(Integer::max);
 
         // 5.8 Find the transaction with the smallest value.
-        Optional<Integer> lowestValueOfTransaction =
+        Optional<Transaction> lowestValueOfTransaction =
                 transactions.stream()
-                        .map(Transaction::value)
-                        .reduce(Integer::min);
+                        .min(comparingInt(Transaction::value));
 
 
         tr2011.forEach(System.out::println);
@@ -89,6 +88,6 @@ public class Exercises {
         System.out.println(tradersNames);
         System.out.println("Any traders based in Milan? " + (anyTradersInMilan ? "yes" : "no"));
         System.out.println("Highest value transaction: $" + highestValueOfTransaction.orElse(0));
-        System.out.println("Smallest value transaction: $" + lowestValueOfTransaction.orElse(0));
+        System.out.println("Smallest transaction: " + lowestValueOfTransaction);
     }
 }
